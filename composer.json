@@ -1,0 +1,8 @@
+{
+    "name": "tsukumijima/twittertoken-viewer",
+    "description": "Twitter API のアクセストークンを確認するやつ",
+    "require": {
+        "abraham/twitteroauth": "^1.1",
+        "smarty/smarty": "^3.1"
+    }
+}

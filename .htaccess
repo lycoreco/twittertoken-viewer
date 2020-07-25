@@ -1,0 +1,6 @@
+RewriteEngine on
+
+RewriteRule ^templates_c/(.*)?$ / [F,L]
+RewriteRule ^vendor/(.*)?$ / [F,L]
+RewriteRule ^composer\.(lock|json)$ / [F,L]
+RewriteRule ^index\.tpl$ / [F,L]

@@ -1,0 +1,35 @@
+
+html {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 49px;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom right,  rgba(27, 216, 222, 0.9) 0%, rgba(24, 140, 194, 0.9) 100%);
+}
+
+i {
+    margin-right: 10px;
+}
+
+#navigation {
+    background: rgb(29, 161, 242) !important;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 500px){
+
+    ol.mb-0 {
+        padding-inline-start: 20px;
+    }
+}
+
+#footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 49px;
+}
