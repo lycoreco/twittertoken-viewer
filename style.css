@@ -2,7 +2,7 @@
 html {
     position: relative;
     min-height: 100%;
-    padding-bottom: 49px;
+    padding-bottom: 55px;
     box-sizing: border-box;
 }
 
@@ -31,5 +31,5 @@ i {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 49px;
+    height: 55px;
 }

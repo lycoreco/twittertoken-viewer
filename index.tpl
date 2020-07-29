@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Twitter API のアクセストークンを確認するやつ</title>
+  <link rel="icon" type="image/png" href="{$site_url}logo.png">
 
   <!-- OGP -->
   <meta property="og:type" content="article">
   <meta property="description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
   <meta property="og:description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
   <meta property="og:title" content="Twitter API のアクセストークンを確認するやつ">
-  <meta property="og:image" content="https://tools.tsukumijima.net/logo.png">
+  <meta property="og:image" content="{$site_url}logo.png">
   <meta property="og:locale" content="ja_JP">
   <!-- /OGP -->
 
@@ -20,7 +21,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
   <meta name="twitter:title" content="Twitter API のアクセストークンを確認するやつ">
-  <meta name="twitter:image" content="https://tools.tsukumijima.net/logo.png">
+  <meta name="twitter:image" content="{$site_url}logo.png">
   <!-- /Twitter Card -->
 
   <!-- JavaScript -->
@@ -30,9 +31,18 @@
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="{$site_url}style.css">
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173935293-1"></script>
   <script>
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-173935293-1');
 
     function copyToClipboard(id) {
 
@@ -46,6 +56,7 @@
       document.execCommand('Copy');
 
       alert('クリップボードにコピーしました。');
+
     }
 
   </script>
@@ -54,7 +65,7 @@
 <body>
 
   <nav id="navigation" class="navbar navbar-expand-md navbar-dark bg-info">
-    <a class="navbar-brand text-white" href="./">
+    <a class="ml-sm-2 ml-lg-5 navbar-brand text-white" href="./">
       <i class="fab fa-twitter"></i>Twitter API のアクセストークンを確認するやつ
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false">
@@ -79,33 +90,40 @@
       <div class="card-header font-weight-bold"><i class="fas fa-info-circle"></i>About</div>
       <div class="card-body">
         <p>
-          自分の Twitter アカウントの Twitter API 用アクセストークン・アクセストークンシークレットを確認できます（ほぼ自分用）。<br>
-          主な利用例として Bot を想定していますが、他の用途でも開発者アカウント以外のアカウントでツイートしたい場合は使えるはずです。<br>
+          任意の Twitter API アプリとログインしている Twitter アカウントでアプリ連携を行い、Twitter API 用のアクセストークン・アクセストークンシークレットを取得するためのツールです。<br>
+          このツールを使うと、<b>一度別のアカウントで開発者登録をしていれば、Twitter の開発者登録をしていないアカウントでも Bot 用のアカウントにしたり自動ツイートを行うようにできます。</b><br>
         </p>
         <p>
-          最近、Twitter のスパム対策の一環で、Twitter API の開発者アカウントの取得がなかなか通らなくなっています。<br>
-          このため、「Bot にしたいアカウントごとに開発者アカウントを取得する」ことが難しくなってきています。<br>
+          最近、Twitter のスパム対策の一環で、Twitter API の開発者登録の審査が厳しくなり、登録手順も複雑になっています。<br>
+          このため、「Bot にしたいアカウントごとに開発者登録をする」ことが難しくなってきているのが実情です。<br>
         </p>
         <p class="mb-2">
-          プログラムから Twitter にツイートを投稿する（Twitter API にアクセスする）には、
+          プログラムから Twitter にツイートを投稿する（Twitter API にアクセスする）ためには、Twitter の開発者登録をした後 Twitter Developer アプリケーション（以下 Twitter API アプリ）を作成し、
           <ul>
-            <li>コンシューマーキー (Consumer Key)</li>
-            <li>コンシューマーシークレット (Consumer Secret)</li>
-            <li>アクセストークン (Access Token)</li>
-            <li>アクセストークンシークレット (Access Token Secret)</li>
+            <li><b>コンシューマーキー (Consumer Key)</b></li>
+            <li><b>コンシューマーシークレット (Consumer Secret)</b></li>
+            <li><b>アクセストークン (Access Token)</b></li>
+            <li><b>アクセストークンシークレット (Access Token Secret)</b></li>
           </ul>
-          の4つが必要です。<br>
+          の4つを取得する必要があります。<br>
+          それらを各言語の Twitter API ライブラリに設定し、Twitter API を操作する流れになっています（例: ツイート投稿）。<br>
         </p>
         <p>
-          <u>Twitter API アプリは一つの開発者アカウントで複数作成することができる</u>ため、新しい Twitter API アプリを作って Consumer Key と Consumer Secret を取得し、
-          あとは Bot にしたいアカウントの Access Token と Access Token Secret が入手できれば、<u>Bot にするアカウントごとにいちいち開発者アカウントを作る必要がなくなります。</u><br>
-          ただし、通常の方法では開発者アカウント以外の Twitter アカウントの Access Token と Access Token Secret は Twitter API アプリの設定画面からは入手できず、
-          Sign With Twitter 機能をつかってアプリ連携するプログラムを組んだ上で Bot にしたいアカウントを認証（アプリ連携）させ、認証後に手に入れた Access Token 等を使うなどの方法をとることになります。<br>
+          このうち、Consumer Key・Consumer Secret は Twitter API アプリごとに固有のもので、別の Twitter API アプリでは値が異なります。<br>
+Access Token・Access Token Secret は Twitter API アプリ とアプリ連携した Twitter アカウントごとに固有のもので、同じユーザーでもアプリ連携した Twitter API アプリが違うと値が異なります。<br>
+          ユーザーがアプリ連携を取り消すとキー自体が無効化されますが、同じユーザーの他の Twitter API アプリの Access Token・Access Token Secret は無効化されません。その Twitter API アプリ専用の特殊なログインパスワード、とイメージするとわかりやすいでしょうか。<br>
+        </p>
+        <p>
+          これを踏まえた上で、<b>「Twitter API を利用したアカウントの操作（ツイートの投稿、削除など）は開発者登録をしたアカウントでないと行えない」というのは誤りです。</b><br>
+          Twitter Developper アプリ設定画面の Keys and tokens からは Consumer Key・Consumer Secret と Access Token・Access Token Secret を取得できますが、このうち Access Token・Access Token Secret は開発者登録をしたアカウントのものが表示されます。<br>
+          裏を返せば、たとえば Bot を作りたい場合、<b>Bot にしたい Twitter アカウントとアプリ連携して Access Token・Access Token Secret が取得できれば、開発者登録をしたアカウント以外でも Bot 用のアカウントにできる、</b>とも言えます。<br>
+        </p>
         <p class="mb-2">
-          このサイトは、前述のアプリ連携する機能を実装し、Bot にしたいアカウントとアプリ連携した後に入手した Access Token をそのまま表示するものです。<br>
-          <b>入手した Access Token 等は画面に表示する処理のみに利用し、<u>保存は一切行いません。</u></b><br>
-          <b>表示された Access Token・Access Token Secret と、別途各自で取得した後、このサイトに入力した開発者アカウント（どのアカウントのでも可）の
-          Consumer Key・Consumer Secret を <a href="https://github.com/abraham/twitteroauth" target="_blank">TwitterOAuth</a> などのライブラリに組み込むことで、初めて Twitter API を使ってツイートできるようになります。</b><br>
+          このツールは、<b>指定した Consumer Key・Consumer Secret で現在ログインしている Twitter アカウントとアプリ連携を行い、取得した Access Token・Access Token Secret をそのまま表示するもの</b>です。<br>
+          指定した Consumer Key・Consumer Secret と表示された Access Token・Access Token Secret を Twitter API ライブラリに設定すると、<b>アプリ連携したアカウントでツイートなどの Twitter API の操作が行えるようになります。</b><br>
+          Bot などの通常アプリ連携が必要ないアプリケーションではそのためだけにアプリ連携機能を実装するのは面倒ですが、このツールを使うことで開発者アカウントを使い回しでき、また実装の手間を減らせると考えています。<br>
+          <b>取得した Access Token・Access Token Secret は画面に表示する処理のみに利用し、<u>保存は一切行いません。</u>（セッションはアクセストークン表示後にすべて破棄されます）</b><br>
+          ツールの性質が性質なので、コードは <a href="https://github.com/tsukumijima/twittertoken-viewer" target="_blank">GitHub</a> にて公開しています。もし信用できない場合は適宜サイトの URL を変更した上でローカル環境で動かしてみても良いと思います。<br>
         </p>
       </div>
     </div>
@@ -116,22 +134,23 @@
         <div class="card-header font-weight-bold"><i class="fas fa-question-circle"></i>つかいかた</div>
         <div class="card-body">
           <ol class="mb-0">
-            <li>自分の Twitter API アプリの Consumer Key・Consumer Secret を入力する</li>
-            <li>自分の Twitter API アプリ設定画面の Callback URLs 欄に {$callback_url} を登録する</li>
+            <li>自分の Twitter API アプリの <b>Consumer Key・Consumer Secret を入力する</b></li>
+            <li>自分の Twitter API アプリ設定画面の <b>Callback URLs 欄に {$site_url} を登録する</b></li>
             <ul>
-              <li>これを行わないと認証に失敗します…</li>
-              <li>Sign With Twitter も有効にしておいてください</li>
-              <li><u>アクセストークンを確認するための一時的な登録で構いません</u>（確認後は削除して OK です）</li>
+              <li>これを行わないと認証に失敗します</li>
+              <li>Enable Sign With Twitter にもチェックしてください</li>
+              <li><b>アプリ連携するための一時的な登録で構いません</b>（確認後は削除してしまっても大丈夫です）</li>
             </ul>
-            <li>下の［認証してアクセストークンを確認する］ボタンを押す</li>
-            <li>自分の Twitter API アプリとの連携画面が表示されるので、［認証する］ボタンを押す</li>
+            <li>下の［認証してアクセストークンを確認する］をクリックする</li>
+            <li>Consumer Key・Consumer Secret に紐付いている Twitter API アプリの連携画面が表示されるので、［連携アプリを認証］をクリックする</li>
             <ul>
-              <li>あらかじめ Bot にしたいアカウントにログインしている状態で認証してください</li>
+              <li>あらかじめアプリ連携を行いたいアカウントにログインしている状態で認証してください</li>
+              <li>［キャンセル］をクリックすると、認証がキャンセルされます。</li>
             </ul>
-            <li>自分の Twitter API アプリで認証したアカウントにアクセスするための Access Token と Access Token Secret が表示されるので、コピーして Bot 内のプログラムに貼り付ける</li>
+            <li>自分の Twitter API アプリで認証したアカウントにアクセスするための Access Token と Access Token Secret が表示されるので、クリップボードにコピーして適宜 Bot 等に設定する</li>
             <ul>
-              <li><b>Access Token と Access Token Secret は絶対に他人に教えないようにしてください！</b></li>
-              <li>Access Token と Access Token Secret が漏洩した場合、<u>他人がアカウントを操作可能になってしまう可能性があります。</u></li>
+              <li><b>Access Token・Access Token Secret は絶対に他人に教えないようにしてください！</b></li>
+              <li>Access Token・Access Token Secret が漏洩した場合、<b><u>他人がアカウントを操作できてしまう可能性があります。</u></b></li>
             </ul>
           </ol>
         </div>
@@ -210,16 +229,15 @@
 
 {/if}
 
-  <nav id="footer" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <div class="navbar-header" style="display: flex; align-items: center;">
-        <a class="navbar-brand text-white small" style="font-size: 95%;" href="./">
-          © 2019 - {date('Y')}
-        </a>
+  <footer id="footer" class="footer bg-dark pt-3 pb-3">
+    <div class="container d-flex flex-column align-items-center align-items-sm-end">
+      <div class="d-inline text-white text-center text-sm-right">
+        <a class="mr-1">© 2019 - {date('Y')}</a>
+        <br class="d-inline d-sm-none">
         <img id="counter" src="/dream/dream.cgi?id=twittertoken_viewer&gif=1">
       </div>
     </div>
-  </nav>
+  </footer>
 
 </body>
 </html>

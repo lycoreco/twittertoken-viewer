@@ -1,6 +1,6 @@
 <?php
 
-ini_set('display_errors', true);
+# ini_set('display_errors', true);
 
 require_once 'vendor/autoload.php';
 
@@ -10,8 +10,8 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 # Smarty
 $smarty = new Smarty();
 
-// コールバック URL (自分のサイトの URL を指定)
-$callback_url = 'https://tools.tsukumijima.net/twittertoken-viewer/';
+// サイトの URL (自分のサイトの URL を指定)
+$site_url = 'https://tools.tsukumijima.net/twittertoken-viewer/';
 
 # セッション名 (Cookie に反映される)
 $session_name = 'twittertoken-viewer_session';
@@ -44,7 +44,7 @@ if (isset($_REQUEST['auth'])) {
         $connection = new TwitterOAuth($_REQUEST['consumer_key'], $_REQUEST['consumer_secret']);
 
         // 認証 URL を取得するためのリクエストトークンを作成
-        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => $callback_url));
+        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => $site_url));
 
         // 認証 URL の取得
         $auth_url = $connection->url('oauth/authenticate', array('oauth_token' => $request_token['oauth_token']));
@@ -71,7 +71,7 @@ if (isset($_REQUEST['auth'])) {
 
             $error = [
                 '<b>エラー：Callback URL がアプリ設定で設定されていない、または一致しないため、アプリ連携ができません。</b><br>',
-                'Twitter Developer のアプリ設定にて、Callback URLs の項目に Callback URL ('.$callback_url.') を追加し、もう一度アプリ連携し直してください。<br>',
+                'Twitter Developer のアプリ設定にて、Callback URLs の項目に Callback URL ('.$site_url.') を追加し、もう一度アプリ連携し直してください。<br>',
             ];
             
         } else if (preg_match('/Could not authenticate you.*/', $exception)){
@@ -162,7 +162,7 @@ if (isset($_REQUEST['auth'])) {
 
     # 画面表示
     $smarty->assign('type', 'normal');
-    $smarty->assign('callback_url', $callback_url);
+    $smarty->assign('site_url', $site_url);
 
 }
 
