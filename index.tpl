@@ -66,7 +66,8 @@
 
   <nav id="navigation" class="navbar navbar-expand-md navbar-dark bg-info">
     <a class="ml-sm-2 ml-lg-5 navbar-brand text-white" href="./">
-      <i class="fab fa-twitter"></i>Twitter API のアクセストークンを確認するやつ
+      <img src="{$site_url}logo.png" class="d-inline-block align-top">
+      Twitter API のアクセストークンを確認するやつ
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false">
       <span class="navbar-toggler-icon"></span>
@@ -137,17 +138,18 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
             <li>自分の Twitter API アプリの <b>Consumer Key・Consumer Secret を入力する</b></li>
             <li>自分の Twitter API アプリ設定画面の <b>Callback URLs 欄に {$site_url} を登録する</b></li>
             <ul>
-              <li>これを行わないと認証に失敗します</li>
-              <li>Enable Sign With Twitter にもチェックしてください</li>
-              <li><b>アプリ連携するための一時的な登録で構いません</b>（確認後は削除してしまっても大丈夫です）</li>
+              <li>これを行わないと認証に失敗します…</li>
+              <li>また、[Enable Sign With Twitter] にチェックを入れてください。</li>
+              <li><b>Callback URLs はアプリ連携するための一時的な登録で構いません</b>（確認後は削除してしまっても大丈夫です）。</li>
+              </ul>
             </ul>
             <li>下の［認証してアクセストークンを確認する］をクリックする</li>
-            <li>Consumer Key・Consumer Secret に紐付いている Twitter API アプリの連携画面が表示されるので、［連携アプリを認証］をクリックする</li>
+            <li>Consumer Key・Consumer Secret に紐付いている Twitter API アプリの連携画面が表示されるので、アプリ連携を行う</li>
             <ul>
-              <li>あらかじめアプリ連携を行いたいアカウントにログインしている状態で認証してください</li>
-              <li>［キャンセル］をクリックすると、認証がキャンセルされます。</li>
+              <li>あらかじめアプリ連携を行いたいアカウントにログインしている状態で［連携アプリを認証］をクリックしてください。</li>
+              <li>［キャンセル］をクリックするとアプリ連携がキャンセルされます。</li>
             </ul>
-            <li>自分の Twitter API アプリで認証したアカウントにアクセスするための Access Token と Access Token Secret が表示されるので、クリップボードにコピーして適宜 Bot 等に設定する</li>
+            <li>自分の Twitter API アプリで先ほどアプリ連携したアカウントにアクセスするための Access Token と Access Token Secret が表示されるので、クリップボードにコピーして適宜 Twitter API を使うソフトや Bot 等に設定する</li>
             <ul>
               <li><b>Access Token・Access Token Secret は絶対に他人に教えないようにしてください！</b></li>
               <li>Access Token・Access Token Secret が漏洩した場合、<b><u>他人がアカウントを操作できてしまう可能性があります。</u></b></li>
