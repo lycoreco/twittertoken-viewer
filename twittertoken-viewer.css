@@ -14,7 +14,23 @@ body {
 /* スマホでのタイトルのフォントサイズ */
 /* iPhone 6s サイズでボタンが改行されない程度に設定 */
 .navbar-brand {
-    font-size: 0.93em;
+    font-size: 0.84em;
+}
+@media (max-width: 575.99px) {
+    .navbar-brand img {
+        display: none;
+    }
+}
+
+/* フッターを画面下部に固定する */
+/* ref: https://twitter.com/tak_dcxi/status/1471627450106974215 */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+body > .container {
+    flex: 1;
 }
 
 /*** 共通部分 ***/
