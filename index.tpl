@@ -54,7 +54,7 @@
   <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container px-2-3">
       <a class="navbar-brand text-white" href="./">
-        <img src="{$site_url}logo.png" width="30">
+        <img src="{$site_url}icon.png" width="30">
         Twitter API のアクセストークンを確認するやつ
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse">
