@@ -72,17 +72,17 @@
             <i class="fas fa-toolbox"></i>ほかのツール
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="/kyofu-bengoshi-generator/">
-              <i class="fas fa-image"></i>かなり恐怖を感じた弁護士ジェネレーター
-            </a>
-            <a class="dropdown-item" href="/tvcaption-generator/">
-              <i class="fas fa-image"></i>テレビの字幕っぽいのジェネレーター
+            <a class="dropdown-item" href="/shadowban-tester/">
+              <i class="fas fa-toolbox"></i>Twitter Shadowban Test
             </a>
             <a class="dropdown-item" href="/susurutv-generator/">
               <i class="fas fa-image"></i>やばいクレーマーのSUSURU TVジェネレーター
             </a>
-            <a class="dropdown-item" href="/shadowban-tester/">
-              <i class="fas fa-toolbox"></i>Twitter Shadowban Test
+            <a class="dropdown-item" href="/tvcaption-generator/">
+              <i class="fas fa-image"></i>テレビの字幕っぽいのジェネレーター
+            </a>
+            <a class="dropdown-item" href="/kyofu-bengoshi-generator/">
+              <i class="fas fa-image"></i>かなり恐怖を感じた弁護士ジェネレーター
             </a>
           </div>
         </li>
