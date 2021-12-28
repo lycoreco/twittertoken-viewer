@@ -168,19 +168,15 @@ footer .navbar-header {
 
 /* スマホでのスタイルを調整 */
 @media screen and (max-width: 575.99px) {
-
     ul, ol {
         padding-left: 20px;
     }
-
     ol.mb-0 {
         padding-inline-start: 20px;
     }
-
     footer .navbar-brand {
         margin-right: 0px;
     }
-
     footer .navbar-header {
         margin-right: auto;
         flex-direction: column;
