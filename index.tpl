@@ -98,7 +98,7 @@
       <div class="card-header font-weight-bold"><i class="fas fa-info-circle"></i>About</div>
       <div class="card-body">
         <p>
-          任意の Twitter API アプリとログインしている Twitter アカウントでアプリ連携を行い、Twitter API 用のアクセストークン・アクセストークンシークレットを取得するためのツールです。<br>
+          現在ログインしている Twitter アカウントで任意の Twitter API アプリとのアプリ連携を行い、Twitter API 用のアクセストークン・アクセストークンシークレットを取得するためのツールです。<br>
           このツールを使うと、<b>一度別のアカウントで開発者登録をしていれば、Twitter の開発者登録をしていないアカウントでも Bot 用のアカウントにしたり自動ツイートを行うようにできます。</b><br>
         </p>
         <p>
@@ -123,14 +123,14 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
         </p>
         <p>
           これを踏まえた上で、<b>「Twitter API を利用したアカウントの操作（ツイートの投稿、削除など）は開発者登録をしたアカウントでないと行えない」というのは誤りです。</b><br>
-          Twitter Developper アプリ設定画面の Keys and tokens からは Consumer Key・Consumer Secret と Access Token・Access Token Secret を取得できますが、このうち Access Token・Access Token Secret は開発者登録をしたアカウントのものが表示されます。<br>
+          Twitter Developer アプリ設定画面の Keys and tokens からは Consumer Key・Consumer Secret と Access Token・Access Token Secret を取得できますが、このうち Access Token・Access Token Secret は開発者登録をしたアカウントのものが表示されます。<br>
           裏を返せば、たとえば Bot を作りたい場合、<b>Bot にしたい Twitter アカウントとアプリ連携して Access Token・Access Token Secret が取得できれば、開発者登録をしたアカウント以外でも Bot 用のアカウントにできる、</b>とも言えます。<br>
         </p>
         <p class="mb-2">
           このツールは、<b>指定した Consumer Key・Consumer Secret で現在ログインしている Twitter アカウントとアプリ連携を行い、取得した Access Token・Access Token Secret をそのまま表示するもの</b>です。<br>
-          指定した Consumer Key・Consumer Secret と表示された Access Token・Access Token Secret を Twitter API ライブラリに設定すると、<b>アプリ連携したアカウントでツイートなどの Twitter API の操作が行えるようになります。</b><br>
-          Bot などの通常アプリ連携が必要ないアプリケーションではそのためだけにアプリ連携機能を実装するのは面倒ですが、このツールを使うことで開発者アカウントを使い回しでき、また実装の手間を減らせると考えています。<br>
-          <b>取得した Access Token・Access Token Secret は画面に表示する処理のみに利用し、<u>保存は一切行いません。</u>（セッションはアクセストークン表示後にすべて破棄されます）</b><br>
+          指定した Consumer Key・Consumer Secret と表示された Access Token・Access Token Secret を Twitter API ライブラリに設定すると、<b>アプリ連携を行ったアカウントでツイートをはじめとした Twitter API の操作が行えるようになります。</b><br>
+          Bot などのアプリケーションでは Twitter API を使えるようにするためだけにアプリ連携機能を実装するのは面倒ですが、このツールを使うことで開発者アカウントを使い回しでき、また実装の手間も減らせると考えています。<br>
+          <b>取得した Access Token・Access Token Secret は画面に表示する処理のみに利用し、<u>保存は一切行いません。</u>セッションはアクセストークン表示後にすべて破棄されます。</b><br>
           ツールの性質が性質なので、コードは <a href="https://github.com/tsukumijima/twittertoken-viewer" target="_blank">GitHub</a> にて公開しています。もし信用できない場合は適宜サイトの URL を変更した上でローカル環境で動かしてみても良いと思います。<br>
         </p>
       </div>
@@ -145,18 +145,18 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
             <li>自分の Twitter API アプリの <b>Consumer Key・Consumer Secret を入力する</b></li>
             <li>自分の Twitter API アプリ設定画面の <b>Callback URLs 欄に {$site_url} を登録する</b></li>
             <ul>
-              <li>これを行わないと認証に失敗します…</li>
+              <li>事前に行っておかないと認証に失敗します。</li>
               <li>また、[Enable Sign With Twitter] にチェックを入れてください。</li>
               <li><b>Callback URLs はアプリ連携するための一時的な登録で構いません</b>（確認後は削除してしまっても大丈夫です）。</li>
               </ul>
             </ul>
             <li>下の［認証してアクセストークンを確認する］をクリックする</li>
-            <li>Consumer Key・Consumer Secret に紐付いている Twitter API アプリの連携画面が表示されるので、アプリ連携を行う</li>
+            <li>Consumer Key・Consumer Secret に紐付いている Twitter API アプリとの連携画面が表示されるので、アプリ連携を行う</li>
             <ul>
-              <li>あらかじめアプリ連携を行いたいアカウントにログインしている状態で［連携アプリを認証］をクリックしてください。</li>
+              <li>事前にアプリ連携を行いたいアカウントにログインしている状態で［連携アプリを認証］をクリックしてください。</li>
               <li>［キャンセル］をクリックするとアプリ連携がキャンセルされます。</li>
             </ul>
-            <li>自分の Twitter API アプリで先ほどアプリ連携したアカウントにアクセスするための Access Token と Access Token Secret が表示されるので、クリップボードにコピーして適宜 Twitter API を使うソフトや Bot 等に設定する</li>
+            <li>自分の Twitter API アプリでアプリ連携したアカウントにアクセスするための Access Token と Access Token Secret が表示されるので、クリップボードにコピーして、適宜 Twitter API を使うソフトや Bot などに設定する</li>
             <ul>
               <li><b>Access Token・Access Token Secret は絶対に他人に教えないようにしてください！</b></li>
               <li>Access Token・Access Token Secret が漏洩した場合、<b><u>他人がアカウントを操作できてしまう可能性があります。</u></b></li>
@@ -171,11 +171,11 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
       <div class="card-header font-weight-bold"><i class="fas fa-key"></i>アクセストークンを確認する</div>
       <form class="card-body" method="POST" action="./?auth" autocomplete="off">
         <p>
-          <span style="display: block;" class="mb-2">コンシューマーキー：</span>
+          <span style="display: block;" class="mb-2">コンシューマーキー:</span>
           <input name="consumer_key" type="text" class="form-control text-dark mb-2" placeholder="Consumer Key" required />
         </p>
         <p>
-          <span style="display: block;" class="mb-2">コンシューマーシークレット：</span>
+          <span style="display: block;" class="mb-2">コンシューマーシークレット:</span>
           <input name="consumer_secret" type="text" class="form-control text-dark mb-2" placeholder="Consumer Secret" required />
         </p>
         <button type="submit" class="btn btn-primary text-white">
@@ -193,14 +193,14 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
       <div class="card-header font-weight-bold"><i class="fas fa-key"></i>アクセストークンを確認する</div>
       <div class="card-body">
         <p>
-          <span style="display: block;" class="mb-2">アクセストークン：</span>
+          <span style="display: block;" class="mb-2">アクセストークン:</span>
           <input id="access-token" type="text" class="form-control text-dark mb-2" value="{$access_token['oauth_token']}" readonly />
           <button type="button" class="btn btn-info text-white" onclick="CopyToClipboard('#access-token')">
             <i class="fas fa-paste"></i>クリップボードにコピーする
           </button>
         </p>
         <p>
-          <span style="display: block;" class="mb-2">アクセストークンシークレット：</span>
+          <span style="display: block;" class="mb-2">アクセストークンシークレット:</span>
           <input id="access-token-secret" type="text" class="form-control text-dark mb-2" value="{$access_token['oauth_token_secret']}" readonly />
           <button type="button" class="btn btn-info text-white" onclick="CopyToClipboard('#access-token-secret')">
             <i class="fas fa-paste"></i>クリップボードにコピーする
