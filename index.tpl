@@ -10,14 +10,14 @@
 
   <!-- Meta -->
   <title>Twitter API のアクセストークンを確認するやつ | つくみ島道具箱</title>
-  <meta name="description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
+  <meta name="description" content="Twitter API アプリとアプリ連携したアカウントのアクセストークンを確認できます。Bot 作成などに使ってください。">
   <link rel="canonical" href="{$site_url}">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="つくみ島道具箱">
   <meta property="og:title" content="Twitter API のアクセストークンを確認するやつ">
-  <meta property="og:description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
+  <meta property="og:description" content="Twitter API アプリとアプリ連携したアカウントのアクセストークンを確認できます。Bot 作成などに使ってください。">
   <meta property="og:url" content="{$site_url}">
   <meta property="og:image" content="{$site_url}icon.png">
   <meta name="twitter:card" content="summary">
