@@ -1,0 +1,172 @@
+
+/*** 個別部分 ***/
+
+/* 背景色 */
+body {
+    background: linear-gradient(to bottom right, #1bd8dee6 0%, #188cc2e6 100%);
+}
+
+/* ナビゲーションバーの色 */
+.navbar {
+    background: #1da1f2;
+}
+
+/* スマホでのタイトルのフォントサイズ */
+/* iPhone 6s サイズでボタンが改行されない程度に設定 */
+.navbar-brand {
+    font-size: 0.93em;
+}
+
+/*** 共通部分 ***/
+
+/* フォント */
+body {
+    font-family: 'Open Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP';
+}
+
+/* デフォルトのフォーカスリングを表示しない */
+*:focus {
+    outline: none !important;
+}
+*:focus-visible {
+    outline: #E86333;
+}
+
+/* アイコンの右側の余白 */
+i {
+    margin-right: 10px;
+}
+
+/* スマホでナビゲーションバーのスタイルが崩れないように調整 */
+.navbar {
+    padding-left: 0;
+    padding-right: 0;
+}
+.navbar-brand {
+    margin-right: 0;
+}
+@media (min-width: 576px) {
+    .navbar-brand {
+        font-size: 1.25rem;
+        margin-right: 1rem;
+    }
+}
+.navbar-collapse {
+    overflow: hidden;
+}
+.dropdown-item {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* ナビゲーションバーを 768px 以上 992px 未満でも折りたたんで表示させる */
+@media (min-width: 768px) {
+    .navbar-expand-md > .container {
+        flex-wrap: wrap;
+    }
+    .navbar-expand-md .navbar-toggler {
+        display: block;
+    }
+    .navbar-expand-md .navbar-collapse {
+        display: block !important;
+        flex-basis: 100%;
+        flex-grow: 1;
+        align-items: center;
+    }
+    .navbar-expand-md .navbar-collapse.collapse:not(.show) {
+        display: none !important;
+    }
+    .navbar-expand-md .navbar-nav {
+        flex-direction: column;
+    }
+    .navbar-expand-md .navbar-nav .dropdown-menu {
+        position: static;
+    }
+}
+@media (min-width: 992px) {
+    .navbar-expand-md > .container {
+        flex-wrap: nowrap;
+    }
+    .navbar-expand-md .navbar-toggler {
+        display: none;
+    }
+    .navbar-expand-md .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+        overflow: visible;
+    }
+    .navbar-expand-md .navbar-collapse.collapse:not(.show) {
+        display: flex !important;
+    }
+    .navbar-expand-md .navbar-nav {
+        flex-direction: row;
+    }
+    .navbar-expand-md .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
+}
+
+/* ナビゲーションバーに hover したとき */
+a.text-light, a.text-light {
+    transition: background-color .15s cubic-bezier(.4,0,.6,1);
+    border-radius: 4px;
+}
+a.text-light:hover, a.text-light:focus {
+    color: #f8f9fa !important;
+}
+a.text-light:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+/* ドロップダウンメニューに hover したとき */
+.dropdown-item {
+    transition: background-color 0.15s cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* ドロップダウンメニューをクリックしたときの青いハイライトを削除 */
+.dropdown-item.active, .dropdown-item:active {
+    color: inherit;
+    background-color: #e9ecef;
+}
+
+/* px-2 と px-3 の中間 */
+.px-2-3 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}
+
+/* ツイートボタンのスタイルの調整 */
+.twitter-share-button {
+    position: relative !important;
+    top: 4px;
+}
+
+/* 箇条書きの行間の調整 */
+ul, ol {
+    line-height: 1.6;
+}
+
+footer .navbar-header {
+    margin-left: auto;
+}
+
+/* スマホでのスタイルを調整 */
+@media screen and (max-width: 575.99px) {
+
+    ul, ol {
+        padding-left: 20px;
+    }
+
+    ol.mb-0 {
+        padding-inline-start: 20px;
+    }
+
+    footer .navbar-brand {
+        margin-right: 0px;
+    }
+
+    footer .navbar-header {
+        margin-right: auto;
+        flex-direction: column;
+    }
+}

@@ -3,82 +3,89 @@
 <head>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Twitter API のアクセストークンを確認するやつ</title>
-  <link rel="icon" type="image/png" href="{$site_url}logo.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <!-- Meta -->
+  <title>Twitter API のアクセストークンを確認するやつ | つくみ島道具箱</title>
+  <meta name="description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
+  <link rel="canonical" href="{$site_url}">
 
   <!-- OGP -->
-  <meta property="og:type" content="article">
-  <meta property="description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
-  <meta property="og:description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="つくみ島道具箱">
   <meta property="og:title" content="Twitter API のアクセストークンを確認するやつ">
-  <meta property="og:image" content="{$site_url}logo.png">
-  <meta property="og:locale" content="ja_JP">
-  <!-- /OGP -->
-
-  <!-- Twitter Card -->
+  <meta property="og:description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
+  <meta property="og:url" content="{$site_url}">
+  <meta property="og:image" content="{$site_url}icon.png">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:description" content="自分の Twitter API のアクセストークンを確認できます。Bot 作成などに使ってください。">
-  <meta name="twitter:title" content="Twitter API のアクセストークンを確認するやつ">
-  <meta name="twitter:image" content="{$site_url}logo.png">
-  <!-- /Twitter Card -->
 
-  <!-- JavaScript -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <!-- WebFont -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Open+Sans:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">
-  <link rel="stylesheet" type="text/css" href="{$site_url}style.css">
+  <!-- Style -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="twittertoken-viewer.css">
+
+  <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="twittertoken-viewer.js"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173935293-1"></script>
   <script>
-
     window.dataLayer = window.dataLayer || [];
     function gtag(){
       dataLayer.push(arguments);
     }
     gtag('js', new Date());
     gtag('config', 'UA-173935293-1');
-
-    function copyToClipboard(id) {
-
-      // コピー対象を取得
-      var copyTarget = document.getElementById(id);
-
-      // コピー対象のテキストを選択する
-      copyTarget.select();
-
-      // 選択しているテキストをクリップボードにコピーする
-      document.execCommand('Copy');
-
-      alert('クリップボードにコピーしました。');
-
-    }
-
   </script>
 
 </head>
 <body>
 
-  <nav id="navigation" class="navbar navbar-expand-md navbar-dark bg-info">
-    <a class="ml-sm-2 ml-lg-5 navbar-brand text-white" href="./">
-      <img src="{$site_url}logo.png" class="d-inline-block align-top">
-      Twitter API のアクセストークンを確認するやつ
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div id="navbar" class="collapse navbar-collapse">
-      <div class="container">
-        <ul class="navbar-nav mr-auto">
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <div class="container px-2-3">
+      <a class="navbar-brand text-white" href="./">
+        <img src="{$site_url}logo.png" width="30">
+        Twitter API のアクセストークンを確認するやつ
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbar-collapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <!--<a class="nav-link text-light" href="/" target="_blank"><i class="fas fa-home"></i></a>-->
+            <a class="nav-link text-light px-3" href="/">
+              <i class="fas fa-home"></i>ホーム
+            </a>
           </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link text-light dropdown-toggle px-3" href="#" data-toggle="dropdown">
+            <i class="fas fa-toolbox"></i>ほかのツール
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="/kyofu-bengoshi-generator/">
+              <i class="fas fa-image"></i>かなり恐怖を感じた弁護士ジェネレーター
+            </a>
+            <a class="dropdown-item" href="/tvcaption-generator/">
+              <i class="fas fa-image"></i>テレビの字幕っぽいのジェネレーター
+            </a>
+            <a class="dropdown-item" href="/susurutv-generator/">
+              <i class="fas fa-image"></i>やばいクレーマーのSUSURU TVジェネレーター
+            </a>
+            <a class="dropdown-item" href="/shadowban-tester/">
+              <i class="fas fa-toolbox"></i>Twitter Shadowban Test
+            </a>
+          </div>
+        </li>
         </ul>
       </div>
     </div>
@@ -166,7 +173,7 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
         <p>
           <span style="display: block;" class="mb-2">コンシューマーキー：</span>
           <input name="consumer_key" type="text" class="form-control text-dark mb-2" placeholder="Consumer Key" required />
-        </p> 
+        </p>
         <p>
           <span style="display: block;" class="mb-2">コンシューマーシークレット：</span>
           <input name="consumer_secret" type="text" class="form-control text-dark mb-2" placeholder="Consumer Secret" required />
@@ -188,14 +195,14 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
         <p>
           <span style="display: block;" class="mb-2">アクセストークン：</span>
           <input id="access-token" type="text" class="form-control text-dark mb-2" value="{$access_token['oauth_token']}" readonly />
-          <button type="button" class="btn btn-info text-white" onclick="copyToClipboard('access-token')">
+          <button type="button" class="btn btn-info text-white" onclick="CopyToClipboard('#access-token')">
             <i class="fas fa-paste"></i>クリップボードにコピーする
           </button>
         </p>
         <p>
           <span style="display: block;" class="mb-2">アクセストークンシークレット：</span>
           <input id="access-token-secret" type="text" class="form-control text-dark mb-2" value="{$access_token['oauth_token_secret']}" readonly />
-          <button type="button" class="btn btn-info text-white" onclick="copyToClipboard('access-token-secret')">
+          <button type="button" class="btn btn-info text-white" onclick="CopyToClipboard('#access-token-secret')">
             <i class="fas fa-paste"></i>クリップボードにコピーする
           </button>
         </p>
@@ -231,12 +238,13 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
 
 {/if}
 
-  <footer id="footer" class="footer bg-dark pt-3 pb-3">
+  <footer class="footer bg-dark pt-3 pb-3">
     <div class="container d-flex flex-column align-items-center align-items-sm-end">
       <div class="d-inline text-white text-center text-sm-right">
-        <a class="mr-1">© 2019 - {date('Y')}</a>
+        <span class="mr-1">© 2019 - {date('Y')}</span>
+        <a class="mr-1 text-white" href="/">つくみ島道具箱</a>
         <br class="d-inline d-sm-none">
-        <img id="counter" src="/dream/dream.cgi?id=twittertoken_viewer&gif=1">
+        <img id="counter" src="/dream/dream.cgi?id=twittertoken_viewer">
       </div>
     </div>
   </footer>
