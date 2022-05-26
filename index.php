@@ -1,7 +1,5 @@
 <?php
 
-// ini_set('display_errors', true);
-
 require_once 'vendor/autoload.php';
 
 // TwitterOAuth
@@ -16,7 +14,7 @@ $site_url = 'https://tools.tsukumijima.net/twittertoken-viewer/';
 // セッション名 (Cookie に反映される)
 $session_name = 'twittertoken-viewer_session';
 
-// セッションを削除する
+// セッションを削除する関数
 function session_remove() {
 
     // セッションを全て空にする
@@ -30,7 +28,7 @@ function session_remove() {
 }
 
 
-// 認証
+// 認証ページ
 if (isset($_REQUEST['auth'])) {
 
     // セッション開始
@@ -94,11 +92,10 @@ if (isset($_REQUEST['auth'])) {
         $smarty->assign('type', 'error');
         $smarty->assign('error', $error);
         $smarty->assign('error_title', '<i class="fas fa-sign-in-alt"></i>アプリケーション認証');
-
     }
 
 
-// 結果
+// 結果ページ
 } else if (isset($_REQUEST['oauth_verifier']) or isset($_REQUEST['denied'])) {
 
     // セッション開始
@@ -108,6 +105,12 @@ if (isset($_REQUEST['auth'])) {
     if (!isset($_GET['denied'])) { // denied でないなら
 
         try {
+
+            // null チェック
+            if (empty($_SESSION['consumer_key']) or empty($_SESSION['consumer_secret']) or
+                empty($_SESSION['oauth_token']) or empty($_SESSION['oauth_token_secret'])) {
+                throw new Exception();
+            }
 
             // セッションに保存しておいたリクエストトークンで Twitter に接続
             $connection = new TwitterOAuth($_SESSION['consumer_key'], $_SESSION['consumer_secret'], $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
@@ -134,7 +137,6 @@ if (isset($_REQUEST['auth'])) {
             $smarty->assign('type', 'error');
             $smarty->assign('error', $error);
             $smarty->assign('error_title', '<i class="fas fa-key"></i>アクセストークンを確認する');
-
         }
 
     } else {
@@ -149,12 +151,10 @@ if (isset($_REQUEST['auth'])) {
         $smarty->assign('type', 'error');
         $smarty->assign('error', $error);
         $smarty->assign('error_title', '<i class="fas fa-key"></i>アクセストークンを確認する');
-
     }
 
     // セッションを削除する
     session_remove();
-
 
 // 通常のアクセス
 } else {
@@ -162,7 +162,6 @@ if (isset($_REQUEST['auth'])) {
     // 画面表示
     $smarty->assign('type', 'normal');
     $smarty->assign('site_url', $site_url);
-
 }
 
 // テンプレートを表示
