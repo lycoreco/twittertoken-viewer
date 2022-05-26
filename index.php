@@ -1,33 +1,32 @@
 <?php
 
-# ini_set('display_errors', true);
+// ini_set('display_errors', true);
 
 require_once 'vendor/autoload.php';
 
-# TwitterOAuth
+// TwitterOAuth
 use Abraham\TwitterOAuth\TwitterOAuth;
 
-# Smarty
+// Smarty
 $smarty = new Smarty();
 
 // サイトの URL (自分のサイトの URL を指定)
 $site_url = 'https://tools.tsukumijima.net/twittertoken-viewer/';
 
-# セッション名 (Cookie に反映される)
+// セッション名 (Cookie に反映される)
 $session_name = 'twittertoken-viewer_session';
 
-# セッションを削除する
+// セッションを削除する
 function session_remove() {
 
     // セッションを全て空にする
-    $_SESSION = array();
+    $_SESSION = [];
 
     // セッション Cookie も削除する
     setcookie(session_name(), '', time() - 42000, '/');
 
     // セッションを破壊する
     session_destroy();
-
 }
 
 
@@ -44,10 +43,10 @@ if (isset($_REQUEST['auth'])) {
         $connection = new TwitterOAuth($_REQUEST['consumer_key'], $_REQUEST['consumer_secret']);
 
         // 認証 URL を取得するためのリクエストトークンを作成
-        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => $site_url));
+        $request_token = $connection->oauth('oauth/request_token', ['oauth_callback' => $site_url]);
 
         // 認証 URL の取得
-        $auth_url = $connection->url('oauth/authenticate', array('oauth_token' => $request_token['oauth_token']));
+        $auth_url = $connection->url('oauth/authenticate', ['oauth_token' => $request_token['oauth_token']]);
 
         // Consumer Key・Consumer Secret をセッションに保存
         $_SESSION['consumer_key'] = $_REQUEST['consumer_key'];
@@ -66,14 +65,14 @@ if (isset($_REQUEST['auth'])) {
         // エラーなのでセッションを削除する
         session_remove();
 
-        # エラーメッセージ
+        // エラーメッセージ
         if (preg_match('/Callback URL not approved for this client application.*/', $exception)){
 
             $error = [
                 '<b>エラー：Callback URL がアプリ設定で設定されていない、または一致しないため、アプリ連携ができません。</b><br>',
                 'Twitter Developer のアプリ設定にて、Callback URLs の項目に Callback URL ('.$site_url.') を追加し、もう一度アプリ連携し直してください。<br>',
             ];
-            
+
         } else if (preg_match('/Could not authenticate you.*/', $exception)){
 
             $error = [
@@ -81,7 +80,7 @@ if (isset($_REQUEST['auth'])) {
                 '指定した Consumer Key・Consumer Secret が間違っている可能性があります。<br>',
                 'Consumer Key・Consumer Secret が正しいかどうか確認し、もう一度アプリ連携し直してください。<br>',
             ];
-            
+
         } else {
 
             $error = [
@@ -91,7 +90,7 @@ if (isset($_REQUEST['auth'])) {
             ];
         }
 
-        # エラーを表示
+        // エラーを表示
         $smarty->assign('type', 'error');
         $smarty->assign('error', $error);
         $smarty->assign('error_title', '<i class="fas fa-sign-in-alt"></i>アプリケーション認証');
@@ -114,24 +113,24 @@ if (isset($_REQUEST['auth'])) {
             $connection = new TwitterOAuth($_SESSION['consumer_key'], $_SESSION['consumer_secret'], $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
 
             // アクセストークンを取得
-            $access_token = $connection->oauth('oauth/access_token', array('oauth_verifier' => $_REQUEST['oauth_verifier']));
+            $access_token = $connection->oauth('oauth/access_token', ['oauth_verifier' => $_REQUEST['oauth_verifier']]);
 
             // $access_token['oauth_token'] がアクセストークン
             // $access_token['oauth_token_secret'] がアクセストークンシークレット
 
-            # トークンを表示
+            // トークンを表示
             $smarty->assign('type', 'result');
             $smarty->assign('access_token', $access_token);
 
         } catch (Exception $e) {
-            
-            # エラーメッセージ
+
+            // エラーメッセージ
             $error = [
                 '<b>エラー：セッションの期限が切れているため、アプリ連携ができません。</b><br>',
                 'もう一度アプリ連携し直してください。<br>',
             ];
 
-            # エラーを表示
+            // エラーを表示
             $smarty->assign('type', 'error');
             $smarty->assign('error', $error);
             $smarty->assign('error_title', '<i class="fas fa-key"></i>アクセストークンを確認する');
@@ -139,14 +138,14 @@ if (isset($_REQUEST['auth'])) {
         }
 
     } else {
-            
-        # エラーメッセージ
+
+        // エラーメッセージ
         $error = [
             '<b>エラー：Twitter アカウントとのアプリ連携が拒否されたため、アプリ連携ができません。</b><br>',
             'もう一度アプリ連携し直してください。<br>',
         ];
 
-        # エラーを表示
+        // エラーを表示
         $smarty->assign('type', 'error');
         $smarty->assign('error', $error);
         $smarty->assign('error_title', '<i class="fas fa-key"></i>アクセストークンを確認する');
@@ -160,11 +159,11 @@ if (isset($_REQUEST['auth'])) {
 // 通常のアクセス
 } else {
 
-    # 画面表示
+    // 画面表示
     $smarty->assign('type', 'normal');
     $smarty->assign('site_url', $site_url);
 
 }
 
-# テンプレートを表示
+// テンプレートを表示
 $smarty->display('index.tpl');
