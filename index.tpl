@@ -72,6 +72,9 @@
             <i class="fas fa-toolbox"></i>ほかのツール
           </a>
           <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="/otowakka-generator/">
+              <i class="fas fa-image"></i>ティーダのチンポ気持ち良すぎだろ！ジェネレーター
+            </a>
             <a class="dropdown-item" href="/shadowban-tester/">
               <i class="fas fa-toolbox"></i>Twitter Shadowban Test
             </a>
