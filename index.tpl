@@ -96,7 +96,7 @@
 
 {if $type == 'normal'}
 
-  <div class="container mt-4">
+  <div class="container px-0 px-sm-2-3 mt-4">
     <div class="card">
       <div class="card-header font-weight-bold"><i class="fas fa-info-circle"></i>About</div>
       <div class="card-body">
@@ -140,7 +140,7 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
     </div>
   </div>
 
-  <div class="container mt-4">
+  <div class="container px-0 px-sm-2-3 mt-4">
       <div class="card">
         <div class="card-header font-weight-bold"><i class="fas fa-question-circle"></i>つかいかた</div>
         <div class="card-body">
@@ -169,7 +169,7 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
       </div>
     </div>
 
-  <div class="container mt-4 mb-4">
+  <div class="container px-0 px-sm-2-3 mt-4 mb-4">
     <div class="card">
       <div class="card-header font-weight-bold"><i class="fas fa-key"></i>アクセストークンを確認する</div>
       <form class="card-body" method="POST" action="./?auth" autocomplete="off">
@@ -179,9 +179,9 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
         </p>
         <p>
           <span style="display: block;" class="mb-2">コンシューマーシークレット:</span>
-          <input name="consumer_secret" type="text" class="form-control text-dark mb-2" placeholder="Consumer Secret" required />
+          <input name="consumer_secret" type="text" class="form-control text-dark mb-4" placeholder="Consumer Secret" required />
         </p>
-        <button type="submit" class="btn btn-primary text-white">
+        <button type="submit" class="btn btn-primary d-block mx-auto text-white">
           <i class="fas fa-key"></i>認証してアクセストークンを確認する
         </button>
       </form>
@@ -191,7 +191,7 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
 {/if}
 {if $type == 'result'}
 
-  <div class="container mt-4 mb-4">
+  <div class="container px-0 px-sm-2-3 mt-4 mb-4">
     <div class="card">
       <div class="card-header font-weight-bold"><i class="fas fa-key"></i>アクセストークンを確認する</div>
       <div class="card-body">
@@ -221,7 +221,7 @@ Access Token・Access Token Secret は Twitter API アプリ とアプリ連携�
 {/if}
 {if $type == 'error'}
 
-  <div class="container mt-4 mb-4">
+  <div class="container px-0 px-sm-2-3 mt-4 mb-4">
     <div class="card">
       <div class="card-header font-weight-bold">{$error_title}</div>
       <div class="card-body">

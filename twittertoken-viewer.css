@@ -151,6 +151,14 @@ a.text-light:hover {
     padding-right: 0.75rem !important;
 }
 
+/* px-2 と px-3 の中間 */
+@media (min-width: 576px) {
+    .px-sm-2-3 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+}
+
 /* ツイートボタンのスタイルの調整 */
 .twitter-share-button {
     position: relative !important;
