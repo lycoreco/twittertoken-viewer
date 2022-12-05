@@ -10,6 +10,7 @@ $smarty = new Smarty();
 
 // サイトの URL (自分のサイトの URL を指定)
 $site_url = 'https://tools.tsukumijima.net/twittertoken-viewer/';
+$smarty->assign('site_url', $site_url);
 
 // セッション名 (Cookie に反映される)
 $session_name = 'twittertoken-viewer_session';
@@ -161,7 +162,6 @@ if (isset($_REQUEST['auth'])) {
 
     // 画面表示
     $smarty->assign('type', 'normal');
-    $smarty->assign('site_url', $site_url);
 }
 
 // テンプレートを表示
