@@ -99,6 +99,12 @@
 
 {if $type == 'normal'}
 
+  <div class="alert alert-warning" role="alert">
+    <div class="container px-0 px-sm-2-3">
+      <b>Twitter API の大幅な改悪と Twitter API 1.1 の廃止に伴い、このツールはおそらく動作しなくなっていると思われます。</b><br>
+      イーロンマスクのせいで Twitter API はもはや個人開発者が遊べる場ではなくなってしまいました。現時点で修正の予定はありません。<br>
+    </div>
+  </div>
   <div class="container px-0 px-sm-2-3 mt-4">
     <div class="card">
       <div class="card-header font-weight-bold"><i class="fas fa-info-circle"></i>About</div>
